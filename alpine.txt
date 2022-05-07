@@ -1,0 +1,72 @@
+Microsoft Windows [Version 10.0.19044.1645]
+(c) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
+
+C:\Users\IQS-User>docker pull alpine
+Using default tag: latest
+latest: Pulling from library/alpine
+df9b9388f04a: Pull complete
+Digest: sha256:4edbd2beb5f78b1014028f4fbb99f3237d9561100b6881aabbf5acce2c4f9454
+Status: Downloaded newer image for alpine:latest
+docker.io/library/alpine:latest
+
+C:\Users\IQS-User>docker images
+REPOSITORY                     TAG                IMAGE ID       CREATED        SIZE
+alpine                         latest             0ac33e5f5afa   4 weeks ago    5.57MB
+delner/ping                    latest             fdec516ae169   4 weeks ago    139MB
+dsklff/delner/ping             latest             fdec516ae169   4 weeks ago    139MB
+dsklff/dockerhub               myfirstimagepush   fdec516ae169   4 weeks ago    139MB
+nginx                          latest             12766a6745ee   5 weeks ago    142MB
+httpd                          2.4                118b6abfbf55   5 weeks ago    144MB
+postgres                       latest             1ee973e26c65   5 weeks ago    376MB
+ubuntu                         16.04              b6f507652425   8 months ago   135MB
+devopsdockeruh/pull_exercise   latest             d9854bc0e13a   3 years ago    75.3MB
+
+C:\Users\IQS-User>docker run alpine ls -l
+total 56
+drwxr-xr-x    2 root     root          4096 Apr  4 16:06 bin
+drwxr-xr-x    5 root     root           340 May  7 14:50 dev
+drwxr-xr-x    1 root     root          4096 May  7 14:50 etc
+drwxr-xr-x    2 root     root          4096 Apr  4 16:06 home
+drwxr-xr-x    7 root     root          4096 Apr  4 16:06 lib
+drwxr-xr-x    5 root     root          4096 Apr  4 16:06 media
+drwxr-xr-x    2 root     root          4096 Apr  4 16:06 mnt
+drwxr-xr-x    2 root     root          4096 Apr  4 16:06 opt
+dr-xr-xr-x  232 root     root             0 May  7 14:50 proc
+drwx------    2 root     root          4096 Apr  4 16:06 root
+drwxr-xr-x    2 root     root          4096 Apr  4 16:06 run
+drwxr-xr-x    2 root     root          4096 Apr  4 16:06 sbin
+drwxr-xr-x    2 root     root          4096 Apr  4 16:06 srv
+dr-xr-xr-x   11 root     root             0 May  7 14:50 sys
+drwxrwxrwt    2 root     root          4096 Apr  4 16:06 tmp
+drwxr-xr-x    7 root     root          4096 Apr  4 16:06 usr
+drwxr-xr-x   12 root     root          4096 Apr  4 16:06 var
+
+C:\Users\IQS-User>docker run alpine echo "hello from alpine"
+hello from alpine
+
+C:\Users\IQS-User>docker run alpine /bin/sh
+
+C:\Users\IQS-User>docker run -it alpine /bin/sh
+/ # exit
+
+C:\Users\IQS-User>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+C:\Users\IQS-User>docker ps -a
+CONTAINER ID   IMAGE                          COMMAND                  CREATED              STATUS                          PORTS     NAMES
+8ee161f691c7   alpine                         "/bin/sh"                18 seconds ago       Exited (0) 12 seconds ago                 trusting_raman
+5943addc6162   alpine                         "/bin/sh"                47 seconds ago       Exited (0) 46 seconds ago                 recursing_wright
+31c0c00d063a   alpine                         "echo 'hello from al…"   About a minute ago   Exited (0) About a minute ago             angry_hodgkin
+c45ac173aed9   alpine                         "ls -l"                  About a minute ago   Exited (0) About a minute ago             youthful_greider
+501fe06b7e2c   devopsdockeruh/pull_exercise   "node index.js"          4 weeks ago          Exited (255) 4 weeks ago                  determined_franklin
+e2d109a3f0f9   nginx                          "/docker-entrypoint.…"   4 weeks ago          Exited (255) 4 weeks ago        80/tcp    exciting_haslett\
+
+C:\Users\IQS-User>docker run -it alpine /bin/sh
+/ # ls
+bin    dev    etc    home   lib    media  mnt    opt    proc   root   run    sbin   srv    sys    tmp    usr    var
+/ # uname -a
+Linux bb2ff34e38c9 5.10.16.3-microsoft-standard-WSL2 #1 SMP Fri Apr 2 22:23:49 UTC 2021 x86_64 Linux
+/ # ^C
+/ # exit
+
+C:\Users\IQS-User>

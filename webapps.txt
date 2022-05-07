@@ -1,0 +1,196 @@
+
+C:\Users\IQS-User>docker run -d dockersamples/static-site
+304aae4b4fb36a541bf38cd01413e050dc6b62756bd7f993b330b8ce72039d03
+
+C:\Users\IQS-User>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS             NAMES
+304aae4b4fb3   dockersamples/static-site   "/bin/sh -c 'cd /usr…"   9 seconds ago    Up 8 seconds    80/tcp, 443/tcp   gallant_sinoussi
+8baf34a43ede   alpine                      "/bin/sh"                16 minutes ago   Up 16 minutes                     lucid_edison
+
+C:\Users\IQS-User>docker stop 304aae4b4fb3
+304aae4b4fb3
+
+C:\Users\IQS-User>docker rm 304aae4b4fb3
+304aae4b4fb3
+
+C:\Users\IQS-User>docker run --name static-site -e AUTHOR="Your Name" -d -P dockersamples/static-site
+9a55301d0e9b52d132f0cff1fe33845279ae374c74ec9b8d28bf77da0100d8ef
+
+C:\Users\IQS-User>docker run --name static-site -e AUTHOR="Doskulov Damir" -d -P dockersamples/static-site
+docker: Error response from daemon: Conflict. The container name "/static-site" is already in use by container "9a55301d0e9b52d132f0cff1fe33845279ae374c74ec9b8d28bf77da0100d8ef". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+
+C:\Users\IQS-User>docker port static-site
+443/tcp -> 0.0.0.0:49155
+80/tcp -> 0.0.0.0:49156
+
+C:\Users\IQS-User>docker run --name static-site-2 -e AUTHOR="Your Name" -d -p 8888:80 dockersamples/static-site
+2216505fe4001bc4f9042d31877b49a4c9f69c6853d3e25b29ab17d487721dba
+
+C:\Users\IQS-User>docker stop static-site
+static-site
+
+C:\Users\IQS-User>docker rm static-site
+static-site
+
+C:\Users\IQS-User>docker rm -f static-site-2
+static-site-2
+
+C:\Users\IQS-User>docker ps
+CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS          PORTS     NAMES
+8baf34a43ede   alpine    "/bin/sh"   19 minutes ago   Up 19 minutes             lucid_edison
+
+C:\Users\IQS-User>docker images
+REPOSITORY                     TAG                IMAGE ID       CREATED        SIZE
+ubuntu                         latest             d2e4e1f51132   7 days ago     77.8MB
+alpine                         latest             0ac33e5f5afa   4 weeks ago    5.57MB
+delner/ping                    latest             fdec516ae169   4 weeks ago    139MB
+dsklff/delner/ping             latest             fdec516ae169   4 weeks ago    139MB
+dsklff/dockerhub               myfirstimagepush   fdec516ae169   4 weeks ago    139MB
+nginx                          latest             12766a6745ee   5 weeks ago    142MB
+httpd                          2.4                118b6abfbf55   5 weeks ago    144MB
+postgres                       latest             1ee973e26c65   5 weeks ago    376MB
+ubuntu                         16.04              b6f507652425   8 months ago   135MB
+devopsdockeruh/pull_exercise   latest             d9854bc0e13a   3 years ago    75.3MB
+ubuntu                         12.04              5b117edd0b76   5 years ago    104MB
+dockersamples/static-site      latest             f589ccde7957   6 years ago    191MB
+
+C:\Users\IQS-User>docker pull ubuntu:12.04
+12.04: Pulling from library/ubuntu
+Digest: sha256:18305429afa14ea462f810146ba44d4363ae76e4c8dfc38288cf73aa07485005
+Status: Image is up to date for ubuntu:12.04
+docker.io/library/ubuntu:12.04
+
+C:\Users\IQS-User>docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+Digest: sha256:26c68657ccce2cb0a31b330cb0be2b5e108d467f641c62e13ab40cbec258c68d
+Status: Image is up to date for ubuntu:latest
+docker.io/library/ubuntu:latest
+
+C:\Users\IQS-User>docker build -t dsklff/myfirstapp .
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: CreateFile C:\Users\IQS-User\Dockerfile: The system cannot find the file specified.
+
+C:\Users\IQS-User>cd Desktop/arc
+
+C:\Users\IQS-User\Desktop\arc>dir
+ Том в устройстве C не имеет метки.
+ Серийный номер тома: 05B6-A272
+
+ Содержимое папки C:\Users\IQS-User\Desktop\arc
+
+07.05.2022  20:14    <DIR>          .
+07.05.2022  20:14    <DIR>          ..
+07.05.2022  20:22    <DIR>          flask-app
+07.05.2022  19:56             4 187 Task1.txt
+               1 файлов          4 187 байт
+               3 папок  42 113 744 896 байт свободно
+
+C:\Users\IQS-User\Desktop\arc>cd flask-app
+
+C:\Users\IQS-User\Desktop\arc\flask-app>docker build -t dsklff/myfirstapp .
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: CreateFile C:\Users\IQS-User\Desktop\arc\flask-app\Dockerfile: The system cannot find the file specified.
+
+C:\Users\IQS-User\Desktop\arc\flask-app>docker build -t dsklff/myfirstapp
+"docker build" requires exactly 1 argument.
+See 'docker build --help'.
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+
+C:\Users\IQS-User\Desktop\arc\flask-app>docker build -t dsklff/myfirstapp .
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: CreateFile C:\Users\IQS-User\Desktop\arc\flask-app\Dockerfile: The system cannot find the file specified.
+
+C:\Users\IQS-User\Desktop\arc\flask-app>docker build -t dsklff/myfirstapp ./Dockerfile.dockerfile
+unable to prepare context: context must be a directory: C:\Users\IQS-User\Desktop\arc\flask-app\Dockerfile.dockerfile
+
+C:\Users\IQS-User\Desktop\arc\flask-app>docker build -t dsklff/myfirstapp ./Dockerfile.dockerfile
+unable to prepare context: path "./Dockerfile.dockerfile" not found
+
+C:\Users\IQS-User\Desktop\arc\flask-app>docker build -t dsklff/myfirstapp .
+Sending build context to Docker daemon   7.68kB
+Step 1/9 : FROM alpine:3.5
+3.5: Pulling from library/alpine
+8cae0e1ac61c: Pull complete
+Digest: sha256:66952b313e51c3bd1987d7c4ddf5dba9bc0fb6e524eed2448fa660246b3e76ec
+Status: Downloaded newer image for alpine:3.5
+ ---> f80194ae2e0c
+Step 2/9 : RUN apk add --update py2-pip
+ ---> Running in d823f81b4720
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.5/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.5/community/x86_64/APKINDEX.tar.gz
+(1/12) Installing libbz2 (1.0.6-r5)
+(2/12) Installing expat (2.2.0-r1)
+(3/12) Installing libffi (3.2.1-r2)
+(4/12) Installing gdbm (1.12-r0)
+(5/12) Installing ncurses-terminfo-base (6.0_p20171125-r1)
+(6/12) Installing ncurses-terminfo (6.0_p20171125-r1)
+(7/12) Installing ncurses-libs (6.0_p20171125-r1)
+(8/12) Installing readline (6.3.008-r4)
+(9/12) Installing sqlite-libs (3.15.2-r2)
+(10/12) Installing python2 (2.7.15-r0)
+(11/12) Installing py-setuptools (29.0.1-r0)
+(12/12) Installing py2-pip (9.0.0-r1)
+Executing busybox-1.25.1-r2.trigger
+OK: 62 MiB in 23 packages
+Removing intermediate container d823f81b4720
+ ---> 7cb3f6109498
+Step 3/9 : RUN pip install --upgrade pip
+ ---> Running in 5f66a98e7333
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/27/79/8a850fe3496446ff0d584327ae44e7500daf6764ca1a382d2d02789accf7/pip-20.3.4-py2.py3-none-any.whl (1.5MB)
+Installing collected packages: pip
+  Found existing installation: pip 9.0.0
+    Uninstalling pip-9.0.0:
+      Successfully uninstalled pip-9.0.0
+Successfully installed pip-20.3.4
+Removing intermediate container 5f66a98e7333
+ ---> 56dea5fc8539
+Step 4/9 : COPY requirements.txt /usr/src/app/
+ ---> efce434b8b61
+Step 5/9 : RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
+ ---> Running in 0a7efd8f5675
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support for Python 2.7 in January 2021. More details about Python 2 support in pip can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support pip 21.0 will remove support for this functionality.
+Collecting Flask==0.10.1
+  Downloading Flask-0.10.1.tar.gz (544 kB)
+Collecting Werkzeug>=0.7
+  Downloading Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)
+Collecting Jinja2>=2.4
+  Downloading Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)
+Collecting itsdangerous>=0.21
+  Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)
+Collecting MarkupSafe>=0.23
+  Downloading MarkupSafe-1.1.1.tar.gz (19 kB)
+Using legacy 'setup.py install' for Flask, since package 'wheel' is not installed.
+Using legacy 'setup.py install' for MarkupSafe, since package 'wheel' is not installed.
+Installing collected packages: Werkzeug, MarkupSafe, Jinja2, itsdangerous, Flask
+    Running setup.py install for MarkupSafe: started
+    Running setup.py install for MarkupSafe: finished with status 'done'
+    Running setup.py install for Flask: started
+    Running setup.py install for Flask: finished with status 'done'
+Successfully installed Flask-0.10.1 Jinja2-2.11.3 MarkupSafe-1.1.1 Werkzeug-1.0.1 itsdangerous-1.1.0
+Removing intermediate container 0a7efd8f5675
+ ---> 42dba41241ec
+Step 6/9 : COPY app.py /usr/src/app/
+ ---> 838ea82a5096
+Step 7/9 : COPY templates/index.html /usr/src/app/templates/
+ ---> 4eabeb5edc23
+Step 8/9 : EXPOSE 5000
+ ---> Running in b23f6ad02bab
+Removing intermediate container b23f6ad02bab
+ ---> c401af88bca5
+Step 9/9 : CMD ["python", "/usr/src/app/app.py"]
+ ---> Running in a9a14aa64299
+Removing intermediate container a9a14aa64299
+ ---> 1bc63bd35726
+Successfully built 1bc63bd35726
+Successfully tagged dsklff/myfirstapp:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+
+C:\Users\IQS-User\Desktop\arc\flask-app>docker run -p 8888:5000 --name myfirstapp dsklff/myfirstapp
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+172.17.0.1 - - [07/May/2022 15:37:53] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [07/May/2022 15:37:55] "GET /favicon.ico HTTP/1.1" 404 -
